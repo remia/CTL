@@ -18,6 +18,8 @@ else()
 endif()
 set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Install directory for project CMake files" )
 
+
+set(CMAKE_MACOSX_RPATH 1)
 # use, i.e. don't skip the full RPATH for the build tree
 SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 # when building, don't use the install RPATH already
@@ -66,9 +68,9 @@ add_subdirectory(OpenEXR_CTL)
 add_subdirectory(unittest EXCLUDE_FROM_ALL)
 
 # Add all targets to the build-tree export set
-export( TARGETS IlmCtl IlmCtlMath IlmCtlSimd FILE "${PROJECT_BINARY_DIR}/CTLLibraryDepends.cmake" )
+# export( TARGETS IlmCtl IlmCtlMath IlmCtlSimd FILE "${PROJECT_BINARY_DIR}/CTLLibraryDepends.cmake" )
 export(PACKAGE CTL)
- 
+
 # Create a CTLBuildTreeSettings.cmake file for the use from the build tree
 file(RELATIVE_PATH CONF_REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}" "${INSTALL_INCLUDE_DIR}")
 configure_file(config/CTLBuildTreeSettings.cmake.in "${PROJECT_BINARY_DIR}/CTLBuildTreeSettings.cmake" @ONLY)
@@ -84,6 +86,5 @@ install( FILES
   "${PROJECT_BINARY_DIR}/CTLConfig.cmake"
   "${PROJECT_BINARY_DIR}/CTLConfigVersion.cmake"
   DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-install(FILES "${PROJECT_BINARY_DIR}/CTLLibraryDepends.cmake" DESTINATION
+install(TARGETS IlmCtl IlmCtlMath IlmCtlSimd EXPORT "${PROJECT_BINARY_DIR}/CTLLibraryDepends.cmake" DESTINATION
   "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-
