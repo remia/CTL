@@ -22,7 +22,7 @@ add_library( IlmCtl ${DO_SHARED}
 )
 
 target_link_libraries( IlmCtl ${IlmBase_LDFLAGS_OTHER} )
-target_link_libraries( IlmCtl Iex IlmThread Half )
+target_link_libraries( IlmCtl Iex IlmThread Imath Half )
 
 set_target_properties( IlmCtl PROPERTIES
   VERSION ${CTL_VERSION}
