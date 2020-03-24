@@ -72,7 +72,7 @@ set(IlmBase_LIBRARIES ${IlmBase_LIBRARY} )
 set(IlmBase_INCLUDE_DIRS ${IlmBase_INCLUDE_DIR} )
 
 if(NOT PC_ILMBASE_FOUND)
-get_filename_component(IlmBase_LDFLAGS_OTHER ${IlmBase_HALF_LIBRARY} PATH)
+get_filename_component(IlmBase_LDFLAGS_OTHER ${IlmBase_LDFLAGS_OTHER} DIRECTORY)
 set(IlmBase_LIBRARY_DIRS ${IlmBase_LDFLAGS_OTHER})
 set(IlmBase_LDFLAGS_OTHER -L${IlmBase_LDFLAGS_OTHER})
 endif()
