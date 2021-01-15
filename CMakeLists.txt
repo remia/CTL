@@ -6,6 +6,9 @@ set( CTL_MINOR_VERSION 5 )
 set( CTL_PATCH_VERSION 0 )
 set( CTL_VERSION ${CTL_MAJOR_VERSION}.${CTL_MINOR_VERSION}.${CTL_PATCH_VERSION} )
 
+
+set(CMAKE_CXX_STANDARD 11)
+
 ## Make install directories overrideable
 set( INSTALL_LIB_DIR lib CACHE PATH "Install directory for libraries" )
 set( INSTALL_BIN_DIR bin CACHE PATH "Install directory for executable binaries" )
