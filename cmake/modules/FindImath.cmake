@@ -5,7 +5,14 @@ if (NOT TARGET Imath::Imath)
 	# Maybe an older version of IlmBase exists?
 	find_package(IlmBase QUIET CONFIG)
 	if(TARGET IlmBase::Imath)
+		# Was failing with cmake 3.17, works in 3.19.6
+		# CMake Error at cmake/modules/FindImath.cmake:8 (add_library):
+		#   add_library cannot create ALIAS target "Imath::Imath" because target
+		#   "IlmBase::Imath" is imported but not globally visible.
+		# Call Stack (most recent call first):
+		#   CMakeLists.txt:14 (find_package)
 		add_library(Imath::Imath ALIAS IlmBase::Imath)
+		add_library(Imath::Half ALIAS IlmBase::Half)
 	endif()
 endif()
 

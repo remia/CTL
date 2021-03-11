@@ -62,6 +62,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
+// Needed for unlink / F_OK on macOS at least...
+#include <unistd.h>
 
 #ifdef __linux__
 #include <linux/limits.h>

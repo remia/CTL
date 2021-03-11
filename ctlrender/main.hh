@@ -52,7 +52,7 @@
 // THAN A.M.P.A.S., WHETHER DISCLOSED OR UNDISCLOSED.
 ///////////////////////////////////////////////////////////////////////////
 
-#if !defined(CTL_UTIL_CTLRENDER_MAIN_INCLUDE)
+#ifndef CTL_UTIL_CTLRENDER_MAIN_INCLUDE
 #define CTL_UTIL_CTLRENDER_MAIN_INCLUDE
 
 #include <stdint.h>
@@ -62,6 +62,7 @@
 extern int verbosity;
 
 // Defined in usage.cc
-void usage(const char *section=NULL);
+// Fix error: use of undeclared identifier 'NULL' ...
+void usage(const char *section=nullptr);
 
 #endif

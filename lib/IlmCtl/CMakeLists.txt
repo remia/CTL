@@ -21,6 +21,14 @@ set(SOURCES
 
 add_library(IlmCtl ${SOURCES})
 
+# See CtlInterpreter.cpp::131
+# Can probably use some builtin cmake variables, didn't check
+target_compile_definitions(IlmCtl
+	PRIVATE
+		PACKAGE="CTL"
+		VERSION="${CTL_VERSION}"
+)
+
 target_include_directories(IlmCtl
 	PUBLIC
 		${CMAKE_CURRENT_SOURCE_DIR}

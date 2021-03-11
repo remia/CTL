@@ -7,9 +7,9 @@ if (AcesContainer_FOUND)
 	add_library(AcesContainer::AcesContainer UNKNOWN IMPORTED GLOBAL)
 	find_file(AcesContainer_LIBRARY
 		NAMES
-			${AcesContainer_LIBRARIES}.${CMAKE_STATIC_LIBRARY_SUFFIX}
-			${AcesContainer_LIBRARIES}.${CMAKE_SHARED_LIBRARY_SUFFIX}
-		PATH
+			${CMAKE_STATIC_LIBRARY_PREFIX}${AcesContainer_LIBRARIES}${CMAKE_STATIC_LIBRARY_SUFFIX}
+			${CMAKE_SHARED_LIBRARY_PREFIX}${AcesContainer_LIBRARIES}${CMAKE_SHARED_LIBRARY_SUFFIX}
+		PATHS
 			${AcesContainer_LIBRARY_DIRS}
 	)
 	if (NOT AcesContainer_LIBRARY)
@@ -18,7 +18,7 @@ if (AcesContainer_FOUND)
 	set_target_properties(AcesContainer::AcesContainer
 		PROPERTIES
 			IMPORTED_LOCATION ${AcesContainer_LIBRARY}
-			INTERFACE_INCLUDE_DIRECTORIES ${AcesContainer_INCLUDE_DIRS}
+			INTERFACE_INCLUDE_DIRECTORIES "${AcesContainer_INCLUDE_DIRS}"
 	)
 	return()
 endif()
