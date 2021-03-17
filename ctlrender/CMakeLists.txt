@@ -24,14 +24,14 @@ target_link_libraries(ctlrender
 )
 
 find_package(TIFF)
-if(TARGET TIFF:TIFF)
+if(TARGET TIFF::TIFF)
 	target_compile_definitions(ctlrender
 		PRIVATE
-			-DHAVE_LIBTIFF=1
+			HAVE_LIBTIFF=1
 	)
 	target_link_libraries(ctlrender
 		PRIVATE
-			TIFF:TIFF
+			TIFF::TIFF
 	)
 endif()
 
@@ -39,7 +39,7 @@ find_package(AcesContainer)
 if (TARGET AcesContainer::AcesContainer)
 	target_compile_definitions(ctlrender
 		PRIVATE
-			-DHAVE_ACESFILE=1
+			HAVE_ACESFILE=1
 	)
 	target_link_libraries(ctlrender
 		PRIVATE
@@ -47,4 +47,4 @@ if (TARGET AcesContainer::AcesContainer)
 	)
 endif()
 
-install(TARGETS ctlrender DESTINATION ${CMAKE_INSTALL_BINDDIR})
+install(TARGETS ctlrender DESTINATION ${CMAKE_INSTALL_BINDIR})
